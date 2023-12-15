@@ -27,7 +27,7 @@ const Post = ({
           }}
         >
           <img
-            src={`http://localhost:3000/${coverImage}`}
+            src={`https://react-blog-backend-pshn.onrender.com/${coverImage}`}
             alt='alternate image'
           />
         </Link>

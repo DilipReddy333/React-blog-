@@ -42,7 +42,7 @@ const EditPage = () => {
         return;
       }
       const response = await fetch(
-        `http://localhost:3000/api/edit-post/${state._id}`,
+        `https://react-blog-backend-pshn.onrender.com/api/edit-post/${state._id}`,
         {
           method: "PUT",
           body: JSON.stringify({ title, summary, post }),

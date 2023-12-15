@@ -9,9 +9,12 @@ const HomePage = () => {
   // const user = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
     const getAllPosts = async () => {
-      const response = await fetch("http://localhost:3000/api/all-posts", {
-        method: "GET",
-      });
+      const response = await fetch(
+        "https://react-blog-backend-pshn.onrender.com/api/all-posts",
+        {
+          method: "GET",
+        }
+      );
       const posts = await response.json();
       if (response.ok) {
         // console.log(posts);

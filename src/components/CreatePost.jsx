@@ -46,7 +46,7 @@ const CreatePost = () => {
       formData.append("authorName", user?.user.username);
       formData.append("authorId", user?.user._id);
       const response = await fetch(
-        "http://localhost:3000/api/user/createpost",
+        "https://react-blog-backend-pshn.onrender.com/api/user/createpost",
         {
           method: "POST",
           body: formData,

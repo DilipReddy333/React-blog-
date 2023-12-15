@@ -12,7 +12,7 @@ const PostDetails = () => {
   // console.log(user.user);
   const deletePost = async (id) => {
     const response = await fetch(
-      `http://localhost:3000/api/delete-post/${id}`,
+      `https://react-blog-backend-pshn.onrender.com/api/delete-post/${id}`,
       {
         method: "DELETE",
       }
