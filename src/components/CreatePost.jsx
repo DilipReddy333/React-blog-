@@ -3,6 +3,7 @@ import "react-quill/dist/quill.snow.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Spinner from "./Spinner";
 
 const modules = {
   toolbar: [
@@ -24,6 +25,7 @@ const CreatePost = () => {
   const [summary, setSummary] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [post, setPost] = useState("");
+  const [loading, setLoading] = useState(false);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const createPostHandler = async (e) => {
@@ -36,8 +38,10 @@ const CreatePost = () => {
         post.trim().length === 0
       ) {
         alert("Please fill all the fields");
+        setLoading(false);
         return;
       }
+      setLoading(true);
       const formData = new FormData();
       formData.append("title", title);
       formData.append("summary", summary);
@@ -54,7 +58,8 @@ const CreatePost = () => {
       );
       const data = await response.json();
       if (response.ok) {
-        console.log(data);
+        // console.log(data);
+        alert("Post created successfully!");
         navigate("/");
       }
     } catch (error) {
@@ -63,6 +68,7 @@ const CreatePost = () => {
   };
   return (
     <form onSubmit={createPostHandler}>
+      {loading && <Spinner message='Creating post...' />}
       <input
         type='text'
         value={title}
