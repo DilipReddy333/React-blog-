@@ -170,3 +170,12 @@ div.post-page div.author {
   font-size: 0.7rem;
   font-weight: bold;
 }
+.spinner_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #3081d0;
+  padding: 5px;
+  border-radius: 5px;
+  color: #3081d0;
+}

@@ -1,9 +1,10 @@
 import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 const Header = () => {
   const { user, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   useEffect(() => {
     const getUser = () => {
       const user = JSON.parse(localStorage.getItem("user"));
@@ -12,15 +13,14 @@ const Header = () => {
         setUser(user);
       }
     };
-    return () => {
-      getUser();
-    };
+    getUser();
     // console.log(user);
   }, []);
   const logout = () => {
     localStorage.removeItem("user");
     setUser({});
     alert("Logout successful");
+    navigate("/login");
   };
   return (
     <header>

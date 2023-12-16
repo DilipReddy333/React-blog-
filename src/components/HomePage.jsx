@@ -1,9 +1,11 @@
 import { AuthContext } from "../context/AuthContext";
 import Post from "./Post";
 import { useState, useEffect, useContext } from "react";
+import Spinner from "./Spinner";
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
   // console.log(user.token);
   // const { user } = useContext(AuthContext);
   // const user = JSON.parse(localStorage.getItem("user"));
@@ -27,6 +29,7 @@ const HomePage = () => {
   }, []);
   return (
     <div>
+      {posts?.length === 0 && <Spinner message='Fetching blogs...' />}
       {posts?.length > 0 && (
         <>
           {posts?.map((post, i) => {

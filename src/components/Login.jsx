@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import Spinner from "./Spinner";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useContext(AuthContext);
   const formSubmitHandler = async (e) => {
@@ -16,6 +18,7 @@ const Login = () => {
       return;
     }
     try {
+      setLoading(true);
       const response = await fetch(
         "https://react-blog-backend-pshn.onrender.com/api/user/login",
         {
@@ -30,6 +33,7 @@ const Login = () => {
       const data = await response.json();
       if (data.error) {
         setMessage(data.error);
+        setLoading(false);
         return;
       }
       localStorage.setItem("user", JSON.stringify(data));
@@ -46,6 +50,7 @@ const Login = () => {
   return (
     <div className='container'>
       {message && <div className='error'>{message}</div>}
+      {loading && <Spinner message='Logging in...' />}
       <form className='register' onSubmit={formSubmitHandler}>
         <h2 style={{ textAlign: "center" }}>Login</h2>
         <label htmlFor='username'>Username</label>
