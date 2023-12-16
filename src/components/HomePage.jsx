@@ -23,9 +23,7 @@ const HomePage = () => {
         console.log("failed to fetch");
       }
     };
-    return () => {
-      getAllPosts();
-    };
+    getAllPosts();
   }, []);
   return (
     <div>
