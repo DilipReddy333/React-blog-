@@ -7,6 +7,7 @@ const Header = () => {
   useEffect(() => {
     const getUser = () => {
       const user = JSON.parse(localStorage.getItem("user"));
+      // console.log(user);
       if (user) {
         setUser(user);
       }

@@ -17,7 +17,7 @@ const HomePage = () => {
       );
       const posts = await response.json();
       if (response.ok) {
-        // console.log(posts);
+        console.log(posts);
         setPosts(posts);
       } else {
         console.log("failed to fetch");
