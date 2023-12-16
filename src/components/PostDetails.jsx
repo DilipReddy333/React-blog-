@@ -113,7 +113,7 @@ const PostDetails = () => {
 
       <div className='image'>
         <img
-          src={`http://localhost:3000/${state.coverImage}`}
+          src={`https://react-blog-backend-pshn.onrender.com/${state.coverImage}`}
           alt='alternate image'
         />
       </div>
