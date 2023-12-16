@@ -20,7 +20,7 @@ const Header = () => {
     localStorage.removeItem("user");
     setUser({});
     alert("Logout successful");
-    navigate("/login");
+    window.location.reload();
   };
   return (
     <header>

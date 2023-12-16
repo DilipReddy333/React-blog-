@@ -37,7 +37,7 @@ const Register = () => {
         return;
       }
       localStorage.setItem("user", JSON.stringify(data));
-      setUser({ ...data.user });
+      setUser({ ...data });
       setUsername("");
       setPassword("");
       alert("registration successful");
